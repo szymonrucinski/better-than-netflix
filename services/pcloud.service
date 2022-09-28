@@ -1,0 +1,17 @@
+[Unit]
+Description= mount firstPcloud
+After=network-online.target
+Documentation=man:rclone(1)
+
+[Service]
+Type=notify
+ExecStart=rclone mount firstPcloud: /home/szymon/clouds/firstPcloud/ --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --vfs-cache-mode full --umask 000
+ExecStop=/bin/fusermount -u /home/szymon/clouds/firstPcloud
+User=1000
+Group=1000
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+
