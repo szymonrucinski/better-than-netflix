@@ -1,0 +1,17 @@
+[Unit]
+Description= mount seedbox
+After=network-online.target
+Documentation=man:rclone(1)
+
+[Service]
+Type=notify
+ExecStart=rclone mount seedbox: /home/szymon/clouds/seedbox/ --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --vfs-cache-mode full --umask 000
+ExecStop=/bin/fusermount -u /home/szymon/clouds/seedbox
+User=1000
+Group=1000
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+
