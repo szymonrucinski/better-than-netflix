@@ -13,9 +13,9 @@ services:
       - PUID=1000
       - TZ=Europe/London
     volumes:
-      - ~/docker/radarr_config:/config 
-      - ~/clouds/seedbox/files:/downloads #Seedbox downloads folder
-      - ~/clouds/firstPcloud/media/movies:/movies
+      - /home/szymon/docker/radarr_config:/config 
+      - /home/szymon/clouds/seedbox/files:/downloads #Seedbox downloads folder
+      - /home/szymon/clouds/firstPcloud/media/movies:/movies
   sonarr:
     image: linuxserver/sonarr
     container_name: sonarr
@@ -29,9 +29,9 @@ services:
       - PUID=1000
       - TZ=Europe/London
     volumes:
-      -  ~/docker/sonarr_config:/config 
-      - ~/clouds/firstPcloud/media/shows:/tv
-      - ~/clouds/ftpSeedbox/files:/downloads
+      -  /home/szymon/docker/sonarr_config:/config 
+      - /home/szymon/clouds/firstPcloud/media/shows:/tv
+      - /home/szymon/clouds/ftpSeedbox/files:/downloads
   jackett:
     image: linuxserver/jackett
     container_name: jackett
@@ -43,8 +43,8 @@ services:
       - PUID=1000
       - TZ=Europe/London
     volumes:
-      - ~/docker/jackett/jackett_config:/config
-      - ~/docker/jackett/downloads:/downloads
+      - /home/szymon/docker/jackett/jackett_config:/config
+      - /home/szymon/docker/jackett/downloads:/downloads
     ports:
       - "9117:9117"
   flaresolverr:
